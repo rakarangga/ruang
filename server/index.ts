@@ -10,7 +10,9 @@ import { API_VERSION } from './api-version.js'
 import { collectMemory } from './memory.js'
 import { getActivity, getCalendar, getChannels, getCommandLog, getDashboard, getKnowledge, getLogs, getOffice, getSnapshot, getTaskBoard, getTaskDetail, getUsage } from './mission-control.js'
 
-const HOST = '127.0.0.1'
+// Loopback by default. RUANG_HOST overrides it, e.g. 0.0.0.0 inside a container whose port
+// the host publishes on 127.0.0.1 only.
+const HOST = process.env.RUANG_HOST || '127.0.0.1'
 // MISSION_CONTROL_PORT is the pre-rename name, still honoured.
 const PORT = Number(process.env.RUANG_PORT ?? process.env.MISSION_CONTROL_PORT) || 3001
 // The built UI sits next to the server: ../dist from server/*.ts (development, npm start)
