@@ -27,7 +27,8 @@ Profile lock (optional, set it in Settings):
   ruang profile-lock off     Remove the PIN and unlock every agent (use this if the PIN is lost)
 
 The server listens on 127.0.0.1 (override with RUANG_HOST, e.g. 0.0.0.0 inside a
-container whose port is published on 127.0.0.1 only). Open http://127.0.0.1:<port> in a browser;
+container whose port is published on 127.0.0.1 only). On slow hosts raise
+RUANG_COMMAND_TIMEOUT_MS (default 8000) and RUANG_CACHE_MS (default 10000). Open http://127.0.0.1:<port> in a browser;
 on a remote machine, forward the port: ssh -L 3001:127.0.0.1:3001 user@host`
 
 async function accessCode(action) {

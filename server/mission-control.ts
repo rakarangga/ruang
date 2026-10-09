@@ -2,9 +2,11 @@ import { execFile as execFileCallback } from 'node:child_process'
 import { promisify } from 'node:util'
 
 const execFile = promisify(execFileCallback)
-const CACHE_MS = 10_000
+// RUANG_CACHE_MS / RUANG_COMMAND_TIMEOUT_MS override these on slow hosts, where the hermes CLI
+// can take longer than 8 s to start; defaults are unchanged.
+const CACHE_MS = Number(process.env.RUANG_CACHE_MS) || 10_000
 const INSIGHTS_CACHE_MS = 60_000
-const COMMAND_TIMEOUT_MS = 8_000
+const COMMAND_TIMEOUT_MS = Number(process.env.RUANG_COMMAND_TIMEOUT_MS) || 8_000
 const COMMAND_LOG_LIMIT = 100
 const LOG_TAIL_LINES = 200
 
